@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBL PartyBox 720 — Reserve It</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF3E9E;
+    --orange:#FF8A2B;
+    --blue:#2CC7F5;
+    --ink:#15121C;
+    --panel:#1D1926;
+    --panel2:#241F32;
+    --cream:#F6F1E9;
+    --dim:#B7AFC4;
+    --line:#332C42;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Unbounded',sans-serif;
+    margin:0;
+    line-height:1.15;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 56px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-140px; left:50%;
+    width:640px; height:640px;
+    transform:translateX(-50%);
+    background:
+      radial-gradient(circle at 30% 30%, var(--pink) 0%, transparent 55%),
+      radial-gradient(circle at 70% 40%, var(--orange) 0%, transparent 55%),
+      radial-gradient(circle at 50% 75%, var(--blue) 0%, transparent 55%);
+    filter:blur(60px);
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .eyebrow-plain{
+    color:var(--dim);
+    font-size:15px;
+    margin-bottom:14px;
+    position:relative;
+  }
+  .hero h1{
+    font-size:clamp(34px,6vw,58px);
+    font-weight:900;
+    max-width:11ch;
+    position:relative;
+  }
+  .hero .accent{
+    background:linear-gradient(90deg,var(--pink),var(--orange) 55%,var(--blue));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lede{
+    margin-top:18px;
+    max-width:52ch;
+    color:var(--dim);
+    font-size:17px;
+    position:relative;
+  }
+  .hero-cta{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    position:relative;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-solid{
+    background:linear-gradient(90deg,var(--pink),var(--orange));
+    color:#1A1220;
+  }
+  .btn-outline{
+    border-color:var(--line);
+    color:var(--cream);
+    background:transparent;
+  }
+
+  /* wave divider */
+  .wave{
+    width:100%; height:46px;
+    display:block;
+  }
+
+  /* ---------- SPECS ---------- */
+  section{padding:52px 0;}
+  .specs h2, .steps h2, .cal h2, .book h2{
+    font-size:clamp(24px,3.6vw,32px);
+    font-weight:700;
+    max-width:16ch;
+  }
+  .spec-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:2px;
+    background:var(--line);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .spec{
+    background:var(--panel);
+    padding:22px 20px;
+  }
+  .spec b{
+    display:block;
+    font-family:'Unbounded',sans-serif;
+    font-size:22px;
+    font-weight:700;
+  }
+  .spec span{color:var(--dim); font-size:14px;}
+  .spec:nth-child(1) b{color:var(--pink);}
+  .spec:nth-child(2) b{color:var(--orange);}
+  .spec:nth-child(3) b{color:var(--blue);}
+  .spec:nth-child(4) b{color:var(--pink);}
+  .spec:nth-child(5) b{color:var(--orange);}
+
+  /* ---------- PHOTOS ---------- */
+  .photo-grid{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+  }
+  .photo-grid figure{
+    margin:0;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--panel);
+  }
+  .photo-grid img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-grid figcaption{
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--dim);
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+  }
+  .testi-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+  }
+  .testi-card p.quote{
+    margin:0 0 14px;
+    font-size:15px;
+    color:var(--cream);
+  }
+  .testi-card p.who{
+    margin:0;
+    font-size:13px;
+    color:var(--dim);
+  }
+  .testi-card:nth-child(1){border-top:3px solid var(--pink);}
+  .testi-card:nth-child(2){border-top:3px solid var(--orange);}
+  .testi-card:nth-child(3){border-top:3px solid var(--blue);}
+
+  /* ---------- STEPS ---------- */
+  .steps-list{
+    margin-top:30px;
+    display:grid;
+    gap:18px;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:16px;
+    align-items:start;
+  }
+  .step-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Unbounded',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:#1A1220;
+  }
+  .step:nth-child(1) .step-num{background:var(--pink);}
+  .step:nth-child(2) .step-num{background:var(--orange);}
+  .step:nth-child(3) .step-num{background:var(--blue);}
+  .step h3{font-size:17px;font-weight:600;font-family:'Inter',sans-serif;}
+  .step p{margin:4px 0 0;color:var(--dim);font-size:15px;}
+
+  /* ---------- CALENDAR ---------- */
+  .cal-card{
+    margin-top:28px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:24px;
+  }
+  .cal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:16px;
+  }
+  .cal-head h3{font-family:'Unbounded',sans-serif;font-size:17px;font-weight:600;}
+  .cal-nav{display:flex;gap:8px;}
+  .cal-nav button{
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--panel2);
+    color:var(--cream);
+    cursor:pointer;
+    font-size:15px;
+  }
+  .cal-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+  }
+  .cal-dow{
+    text-align:center;
+    font-size:12px;
+    color:var(--dim);
+    padding-bottom:4px;
+  }
+  .cal-day{
+    aspect-ratio:1;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    font-size:13px;
+    background:transparent;
+    color:var(--cream);
+    border:1px solid transparent;
+    cursor:default;
+  }
+  .cal-day.empty{visibility:hidden;}
+  .cal-day.past{color:#4A4359;}
+  .cal-day.free{
+    border-color:var(--line);
+    cursor:pointer;
+  }
+  .cal-day.free:hover{border-color:var(--blue);}
+  .cal-day.selected{
+    background:linear-gradient(135deg,var(--blue),var(--pink));
+    color:#14121C;
+    font-weight:700;
+  }
+  .cal-day.booked{
+    background:var(--panel2);
+    color:#6A6178;
+    text-decoration:line-through;
+    cursor:not-allowed;
+  }
+  .cal-legend{
+    display:flex;gap:18px;margin-top:16px;flex-wrap:wrap;
+    font-size:13px;color:var(--dim);
+  }
+  .cal-legend span{display:flex;align-items:center;gap:6px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .dot.free{border:1px solid var(--line);}
+  .dot.booked{background:var(--panel2);}
+  .dot.selected{background:linear-gradient(135deg,var(--blue),var(--pink));}
+  .cal-note{margin-top:14px;font-size:13px;color:var(--dim);}
+
+  /* ---------- FORM ---------- */
+  .form-card{
+    margin-top:28px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:28px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    color:var(--dim);
+    margin-bottom:6px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:var(--panel2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px 14px;
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--blue);
+    outline-offset:1px;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.row2{grid-template-columns:1fr;}}
+  .selected-date-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:100px;
+    background:var(--panel2);
+    border:1px solid var(--line);
+    font-size:14px;
+    margin-bottom:18px;
+  }
+  #status-msg{
+    margin-top:16px;
+    font-size:14px;
+    padding:14px 16px;
+    border-radius:12px;
+    display:none;
+  }
+  #status-msg.ok{display:block;background:rgba(44,199,245,0.12);border:1px solid var(--blue);}
+  #status-msg.err{display:block;background:rgba(255,62,158,0.12);border:1px solid var(--pink);}
+
+  footer{
+    padding:36px 0 60px;
+    color:var(--dim);
+    font-size:13px;
+    text-align:center;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow-plain">Sound rental · fill-up form + reservation only</div>
+    <h1>Rent the <span class="accent">JBL PartyBox 720</span> for your next event</h1>
+    <p class="lede">Includes 2 free JBL wireless microphones. Pick an open date on the calendar below, fill in your event details, and I'll confirm everything with you over Messenger.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-solid">Check dates &amp; reserve</a>
+      <a href="https://www.facebook.com/share/19WFjfv4HW/?mibextid=wwXIfr" target="_blank" rel="noopener" class="btn btn-outline">Message me directly</a>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none">
+  <path d="M0,20 C150,45 350,-5 500,20 C650,45 850,-5 1000,20 C1100,35 1150,10 1200,20 L1200,40 L0,40 Z" fill="#1D1926"/>
+</svg>
+
+<section class="specs">
+  <div class="wrap">
+    <h2>What you're booking</h2>
+    <div class="spec-grid">
+      <div class="spec"><b>800W</b><span>Peak RMS output</span></div>
+      <div class="spec"><b>40 hrs</b><span>Battery life</span></div>
+      <div class="spec"><b>Dynamic</b><span>Built-in light show</span></div>
+      <div class="spec"><b>IPX4</b><span>Splash resistant</span></div>
+      <div class="spec"><b>+2 Mics</b><span>Free JBL wireless mics included</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="photos">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <div class="photo-grid">
+      <figure>
+        <img src="photo-1.jpg" alt="JBL PartyBox 720 speaker">
+        <figcaption>The unit, ready for delivery</figcaption>
+      </figure>
+      <figure>
+        <img src="photo-2.jpg" alt="Speaker set up at a barangay event">
+        <figcaption>Powering a barangay event</figcaption>
+      </figure>
+      <figure>
+        <img src="photo-3.jpg" alt="Speaker light show with included mic">
+        <figcaption>Light show + one of the free mics</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <h2>How reservation works</h2>
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><h3>Pick an open date</h3><p>Tap a free day on the calendar — booked dates are already grayed out.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div><h3>Fill up the form</h3><p>Add your name, event type, and pickup or delivery preference.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div><h3>Confirm on Messenger</h3><p>Your details get copied automatically — just paste and send to lock it in.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <h2>What renters say</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">Thank u so much for this JBL speaker, we really had fun and the sound quality was excellent! We truly appreciate your great service and smooth transaction — highly recommended!</p>
+        <p class="who">— Happy renter</p>
+      </div>
+      <div class="testi-card">
+        <p class="quote">Replace this with a real quote from a happy renter.</p>
+        <p class="who">— Name, event type</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cal" id="calendar">
+  <div class="wrap">
+    <h2>Availability calendar</h2>
+    <div class="cal-card">
+      <div class="cal-head">
+        <div class="cal-nav"><button id="prevMonth" aria-label="Previous month">‹</button></div>
+        <h3 id="monthLabel">Month Year</h3>
+        <div class="cal-nav"><button id="nextMonth" aria-label="Next month">›</button></div>
+      </div>
+      <div class="cal-grid" id="dowRow"></div>
+      <div class="cal-grid" id="calGrid" style="margin-top:4px;"></div>
+      <div class="cal-legend">
+        <span><i class="dot free"></i>Open</span>
+        <span><i class="dot selected"></i>Selected</span>
+        <span><i class="dot booked"></i>Reserved</span>
+      </div>
+      <p class="cal-note">Booked dates are visible to anyone viewing this page so availability stays accurate — no personal details are shown, just which days are taken.</p>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <h2>Fill up your reservation</h2>
+    <div class="form-card">
+      <div id="dateChipWrap"></div>
+      <form id="bookingForm">
+        <div class="row2">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" required placeholder="Juan Dela Cruz">
+          </div>
+          <div class="field">
+            <label for="contact">Contact number</label>
+            <input type="tel" id="contact" required placeholder="09XX XXX XXXX">
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="eventType">Event type</label>
+            <select id="eventType">
+              <option>Birthday</option>
+              <option>Wedding / debut</option>
+              <option>Reunion / party</option>
+              <option>Videoke night</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="method">Pickup or delivery</label>
+            <select id="method">
+              <option>Pickup</option>
+              <option>Delivery</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="notes">Notes (location, time, anything else)</label>
+          <textarea id="notes" rows="3" placeholder="e.g. Event starts 6PM, need it by 4PM at Barangay..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid" style="width:100%;justify-content:center;">Reserve this date &amp; open Messenger</button>
+      </form>
+      <div id="status-msg"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  JBL PartyBox 720 rental — fill-up form &amp; reservation only. Final confirmation happens on Messenger.
+</footer>
+
+<script>
+(function(){
+  const DOW = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dowRow = document.getElementById('dowRow');
+  DOW.forEach(d=>{
+    const el = document.createElement('div');
+    el.className = 'cal-dow';
+    el.textContent = d;
+    dowRow.appendChild(el);
+  });
+
+  // ---- Database connection ----
+  // Paste your Firebase Realtime Database URL below (see setup steps).
+  // It looks like: https://your-project-id-default-rtdb.firebaseio.com
+  const FIREBASE_DB_URL = 'PASTE_YOUR_FIREBASE_DATABASE_URL_HERE';
+
+  let today = new Date();
+  today.setHours(0,0,0,0);
+  let viewYear = today.getFullYear();
+  let viewMonth = today.getMonth();
+  let selectedDate = null; // 'YYYY-MM-DD'
+  let bookedDates = [];
+
+  function pad(n){ return n<10 ? '0'+n : ''+n; }
+  function toKey(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
+
+  function dbReady(){
+    return FIREBASE_DB_URL && !FIREBASE_DB_URL.includes('PASTE_YOUR');
+  }
+
+  async function loadBookings(){
+    if(!dbReady()){
+      console.warn('Firebase database URL not set — calendar will not save reservations.');
+      bookedDates = [];
+      renderCalendar();
+      return;
+    }
+    try{
+      const res = await fetch(FIREBASE_DB_URL + '/booked-dates.json');
+      const data = await res.json();
+      bookedDates = Array.isArray(data) ? data.filter(Boolean) : [];
+    }catch(e){
+      bookedDates = [];
+    }
+    renderCalendar();
+  }
+
+  async function saveBooking(dateKey){
+    if(!dbReady()) return true; // no DB configured yet, fall back to local-only
+    try{
+      const res = await fetch(FIREBASE_DB_URL + '/booked-dates.json');
+      const data = await res.json();
+      let current = Array.isArray(data) ? data.filter(Boolean) : [];
+      if(current.includes(dateKey)) return false;
+      current.push(dateKey);
+      await fetch(FIREBASE_DB_URL + '/booked-dates.json', {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(current)
+      });
+      bookedDates = current;
+      return true;
+    }catch(e){
+      bookedDates.push(dateKey);
+      return true;
+    }
+  }
+
+  function renderCalendar(){
+    document.getElementById('monthLabel').textContent = MONTHS[viewMonth] + ' ' + viewYear;
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
+
+    for(let i=0;i<firstDay;i++){
+      const empty = document.createElement('div');
+      empty.className = 'cal-day empty';
+      grid.appendChild(empty);
+    }
+
+    for(let d=1; d<=daysInMonth; d++){
+      const cell = document.createElement('div');
+      const key = toKey(viewYear, viewMonth, d);
+      const cellDate = new Date(viewYear, viewMonth, d);
+      cell.textContent = d;
+      cell.className = 'cal-day';
+
+      if(cellDate < today){
+        cell.classList.add('past');
+      } else if(bookedDates.includes(key)){
+        cell.classList.add('booked');
+      } else {
+        cell.classList.add('free');
+        if(key === selectedDate) cell.classList.add('selected');
+        cell.addEventListener('click', ()=>{
+          selectedDate = key;
+          renderCalendar();
+          renderChip();
+        });
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  function renderChip(){
+    const wrap = document.getElementById('dateChipWrap');
+    if(!selectedDate){
+      wrap.innerHTML = '<p style="color:var(--dim);font-size:14px;margin:0 0 16px;">Tap an open date on the calendar above to select it.</p>';
+      return;
+    }
+    const d = new Date(selectedDate + 'T00:00:00');
+    const pretty = d.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+    wrap.innerHTML = '<div class="selected-date-chip">📅 ' + pretty + '</div>';
+  }
+
+  document.getElementById('prevMonth').addEventListener('click', ()=>{
+    viewMonth--;
+    if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+    renderCalendar();
+  });
+  document.getElementById('nextMonth').addEventListener('click', ()=>{
+    viewMonth++;
+    if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+    renderCalendar();
+  });
+
+  const MESSENGER_URL = 'https://www.facebook.com/share/19WFjfv4HW/?mibextid=wwXIfr';
+
+  document.getElementById('bookingForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const statusEl = document.getElementById('status-msg');
+
+    if(!selectedDate){
+      statusEl.className = 'err';
+      statusEl.textContent = 'Please tap an open date on the calendar first.';
+      return;
+    }
+    if(bookedDates.includes(selectedDate)){
+      statusEl.className = 'err';
+      statusEl.textContent = 'That date just got taken — please pick another open date.';
+      renderCalendar();
+      return;
+    }
+
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const eventType = document.getElementById('eventType').value;
+    const method = document.getElementById('method').value;
+    const notes = document.getElementById('notes').value.trim();
+    const prettyDate = new Date(selectedDate + 'T00:00:00').toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+
+    const saved = await saveBooking(selectedDate);
+    if(!saved){
+      statusEl.className = 'err';
+      statusEl.textContent = 'That date just got taken — please pick another open date.';
+      renderCalendar();
+      return;
+    }
+
+    const summary =
+      'JBL PartyBox 720 Reservation\\n' +
+      'Date: ' + prettyDate + '\\n' +
+      'Name: ' + name + '\\n' +
+      'Contact: ' + contact + '\\n' +
+      'Event type: ' + eventType + '\\n' +
+      'Pickup/Delivery: ' + method + '\\n' +
+      (notes ? ('Notes: ' + notes) : 'Notes: —');
+
+    try{
+      await navigator.clipboard.writeText(summary);
+    }catch(e){ /* clipboard may be blocked; user can still type manually */ }
+
+    window.open(MESSENGER_URL, '_blank');
+
+    statusEl.className = 'ok';
+    statusEl.textContent = prettyDate + ' is now marked reserved. Your details were copied — paste them into the Messenger chat that just opened to confirm.';
+
+    renderCalendar();
+    selectedDate = null;
+    renderChip();
+    this.reset();
+  });
+
+  loadBookings();
+  renderChip();
+})();
+</script>
+
+</body>
+</html>
